@@ -13,6 +13,18 @@ RUN jq -r .packages[] /usr/share/rpm-ostree/treefile.json > /usr/local/share/kde
 # INSTALL REPOS
 RUN dnf -y install dnf5-plugins
 RUN dnf config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo 
+RUN dnf config-manager addrepo --from-repofile=https://pkg.surfacelinux.com/fedora/linux-surface.repo
+
+# INSTALL SURFACE PATCHES
+RUN dnf -y install wget
+RUN wget https://github.com/linux-surface/linux-surface/releases/download/silverblue-20201215-1/kernel-20201215-1.x86_64.rpm
+RUN rpm-ostree override replace ./*.rpm \
+	--remove kernel-core \
+	--remove kernel-modules \
+	--install kernel-surface \
+	--install iptsd \
+        --install libwacom-surface \
+        --install libwacom-surface-data
 
 # INSTALL PACKAGES
 RUN dnf -y install @workstation-product-environment
