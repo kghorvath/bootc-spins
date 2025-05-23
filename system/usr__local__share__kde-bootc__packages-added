@@ -2,27 +2,20 @@
 # List of packages to install on top of base image
 ####################################################
 
-# LibreOffice
-libreoffice
-libreoffice-help-en
-
 # Utilities
+alacritty
 vim-default-editor
+emacs
 git
 vifm
 python3-pip
-
-# Cockpit
-cockpit
-cockpit-podman
-cockpit-selinux
-cockpit-machines
+stow
 
 # Virtualisation
 qemu-kvm
 libvirt
 virt-install
-virt-viewer
+virt-manager
 
 # Tailscale network
 tailscale
@@ -35,11 +28,4 @@ nmap
 
 # Printer drivers
 # https://pagure.io/workstation-ostree-config/blob/main/f/common.yaml
-c2esp
-dymo-cups-drivers
 printer-driver-brlaser
-ptouch-driver
-splix
-
-# System
-kamera

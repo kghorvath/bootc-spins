@@ -3,12 +3,12 @@
 ####################################################
 
 # Discover plugins related to standard repositories (rpm) - Not compatible with bootc
-plasma-discover-offline-updates
-plasma-discover-packagekit
+#plasma-discover-offline-updates
+#plasma-discover-packagekit
 
 # Gnome object database not required in KDE
-tracker
-tracker-miners
+#tracker
+#tracker-miners
 
 # Exclude mariadb server tools that bring in Perl
 mariadb-server-utils

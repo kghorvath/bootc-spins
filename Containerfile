@@ -1,5 +1,5 @@
 FROM quay.io/fedora/fedora-bootc:42
-MAINTAINER First Last
+MAINTAINER Kamin Horvath 
 
 # SETUP FILESYSTEM
 RUN rmdir /opt && ln -s -T /var/opt /opt
@@ -15,7 +15,7 @@ RUN dnf -y install dnf5-plugins
 RUN dnf config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo 
 
 # INSTALL PACKAGES
-RUN dnf -y install @kde-desktop-environment
+RUN dnf -y install @workstation-product-environment
 RUN grep -vE '^#' /usr/local/share/kde-bootc/packages-added | xargs dnf -y install --allowerasing
 
 # REMOVE PACKAGES
@@ -27,9 +27,6 @@ RUN dnf clean all
 COPY --chmod=0755 ./system/usr__local__bin/* /usr/local/bin/
 COPY --chmod=0644 ./system/etc__skel__kde-bootc /etc/skel/.bashrc.d/kde-bootc
 COPY --chmod=0600 ./system/usr__lib__ostree__auth.json /usr/lib/ostree/auth.json
-
-# USERS
-COPY --chmod=0644 ./system/usr__lib__credstore__home.create.admin /usr/lib/credstore/home.create.admin
 
 COPY --chmod=0755 ./scripts/* /tmp/scripts/
 RUN /tmp/scripts/config-users
