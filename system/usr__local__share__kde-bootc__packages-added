@@ -10,6 +10,7 @@ git
 vifm
 python3-pip
 stow
+terminus-fonts-console
 
 # Virtualisation
 qemu-kvm

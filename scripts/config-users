@@ -1,11 +1,12 @@
 #!/bin/bash
 
-USER_NAME=nerevarine
+USER_NAME=hokage
 
 # STANDARD USERS
 # Standard users are recorded in /etc/passwd and /etc/group
 # Creating users as part of the container build ensures these files won't drift
-#useradd -G wheel -u 1000 -K SUB_GID_MIN=1000001 -K SUB_UID_MIN=1000001 $USER_NAME
+useradd -G wheel -u 2000 $USER_NAME
+#useradd -G wheel -u 2000 -K SUB_GID_MIN=1000001 -K SUB_UID_MIN=1000001 $USER_NAME
 #echo "changeme" | passwd $USER_NAME -s
 
 # Setup initial password for root
