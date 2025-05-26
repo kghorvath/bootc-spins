@@ -42,7 +42,7 @@ COPY --chmod=0600 ./system/usr__lib__ostree__auth.json /usr/lib/ostree/auth.json
 
 COPY --chmod=0755 ./scripts/* /tmp/scripts/
 RUN /tmp/scripts/config-users
-RUN /tmp/scripts/config-authselect && rm -r /tmp/scripts
+RUN rm -r /tmp/scripts
 
 # SYSTEMD
 COPY --chmod=0644 ./systemd/usr__lib__systemd__system__firstboot-setup.service /usr/lib/systemd/system/firstboot-setup.service
